@@ -1,36 +1,38 @@
-# 用自然語言生成圖表(可用你自己的CSV或excel資料)
+# Generate Charts with Natural Language (Use Your Own CSV or Excel Data)
 
-一個基於 AI 的數據視覺化工具，能夠自動分析 Excel/CSV 檔案並根據自然語言描述生成各種圖表。
+[English](README.md) | [繁體中文](README.zh-TW.md)
 
-## 功能特色
+An AI-based data visualization tool that automatically analyzes Excel/CSV files and generates various charts based on natural language descriptions.
 
-- **LLM驅動**: 使用 Google Gemini API 理解自然語言指令
-- **多格式支援**: 支援 Excel (.xlsx) 和 CSV (.csv) 檔案
-- **數據分析**: 自動識別數據類型（數值、日期、類別）
-- **圖表支援**: 支援柱狀圖、折線圖、散點圖、圓餅圖等
-- **互動視覺化**: 基於 Plotly 的互動式圖表
-- **安全執行**: 代碼安全檢查和沙箱執行環境
-- **重試機制**: 自動錯誤處理和後備圖表機制
-- **響應式界面**: 基於 Streamlit 的現代化 Web 界面
+## Features
 
-## 快速開始
+- **LLM-Driven**: Uses Google Gemini API to understand natural language instructions
+- **Multi-Format Support**: Supports Excel (.xlsx) and CSV (.csv) files
+- **Data Analysis**: Automatically identifies data types (numeric, date, categorical)
+- **Chart Support**: Supports bar charts, line charts, scatter plots, pie charts, and more
+- **Interactive Visualization**: Interactive charts based on Plotly
+- **Safe Execution**: Code safety checks and sandboxed execution environment
+- **Retry Mechanism**: Automatic error handling and fallback chart mechanism
+- **Responsive Interface**: Modern web interface based on Streamlit
 
-### 環境要求
+## Quick Start
 
-- Python 3.11 或 3.12 （推薦，Python 3.13 可能有兼容性問題）
+### Requirements
+
+- Python 3.11 or 3.12 (recommended, Python 3.13 may have compatibility issues)
 - Google Gemini API Key
 
-### 安裝步驟
+### Installation
 
-#### 方法 1: 快速安裝（推薦）
+#### Method 1: Quick Install (Recommended)
 
-1. **克隆專案**
+1. **Clone the project**
    ```bash
    git clone https://github.com/chengyimio/CSV_to_Chart_LLM.git
    cd CSV_to_Chart_LLM/excel-chart-generator
    ```
 
-2. **使用自動安裝腳本**
+2. **Use the automatic installation script**
 
    **Windows:**
    ```bash
@@ -42,20 +44,20 @@
    python3 setup.py
    ```
 
-   腳本會自動完成：
-   - 檢查 Python 版本
-   - 建立虛擬環境
-   - 安裝所有依賴
-   - 創建 `.env` 配置文件
+   The script will automatically:
+   - Check Python version
+   - Create virtual environment
+   - Install all dependencies
+   - Create `.env` configuration file
 
-3. **設定 API Key**
-   - 前往 [Google AI Studio](https://ai.google.dev) 取得 Gemini API Key
-   - 編輯 `excel-chart-generator/.env` 檔案，填入你的 API Key：
+3. **Set up API Key**
+   - Go to [Google AI Studio](https://ai.google.dev) to get your Gemini API Key
+   - Edit the `excel-chart-generator/.env` file and enter your API Key:
      ```env
-     GEMINI_API_KEY=你的_API_金鑰
+     GEMINI_API_KEY=your_api_key_here
      ```
 
-4. **運行應用**
+4. **Run the application**
 
    **Windows:**
    ```bash
@@ -69,15 +71,15 @@
    streamlit run app.py
    ```
 
-#### 方法 2: 手動安裝
+#### Method 2: Manual Installation
 
-1. **克隆專案**
+1. **Clone the project**
    ```bash
    git clone https://github.com/chengyimio/CSV_to_Chart_LLM.git
    cd CSV_to_Chart_LLM/excel-chart-generator
    ```
 
-2. **建立虛擬環境**
+2. **Create virtual environment**
 
    **Windows:**
    ```bash
@@ -91,88 +93,88 @@
    source venv/bin/activate
    ```
 
-3. **安裝依賴**
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **設定環境變數**
+4. **Set up environment variables**
    ```bash
-   # 複製環境變數模板
+   # Copy environment variable template
    cp .env.example .env
 
-   # 編輯 .env 並填入你的 Gemini API Key
+   # Edit .env and enter your Gemini API Key
    ```
 
-5. **運行應用**
+5. **Run the application**
    ```bash
    streamlit run app.py
    ```
 
-## 系統架構
+## System Architecture
 
 ```
 excel-chart-generator/
-├── app.py                     # 主應用程式
-├── .env                       # 環境變數配置
-├── requirements.txt           # 專案依賴
+├── app.py                     # Main application
+├── .env                       # Environment configuration
+├── requirements.txt           # Project dependencies
 ├── modules/
 │   ├── __init__.py
-│   ├── data_analyzer.py       # 數據分析模組
-│   ├── gemini_client.py       # Gemini API 客戶端
-│   ├── chart_generator.py     # 圖表生成器
-│   └── module_manager.py      # 模組管理配置
-└── uploads/                   # 暫存上傳檔案
+│   ├── data_analyzer.py       # Data analysis module
+│   ├── gemini_client.py       # Gemini API client
+│   ├── chart_generator.py     # Chart generator
+│   └── module_manager.py      # Module management configuration
+└── uploads/                   # Temporary upload files
 ```
 
-## 使用方式
+## Usage
 
-### 基本使用流程
+### Basic Workflow
 
-1. **上傳數據檔案**: 支援 Excel (.xlsx) 或 CSV (.csv)
-2. **分析數據結構**: 系統自動識別欄位類型
-3. **描述圖表需求**: 用自然語言描述想要的圖表
-4. **生成視覺化**: AI 自動生成並顯示圖表
+1. **Upload Data File**: Supports Excel (.xlsx) or CSV (.csv)
+2. **Analyze Data Structure**: System automatically identifies field types
+3. **Describe Chart Requirements**: Describe the desired chart in natural language
+4. **Generate Visualization**: AI automatically generates and displays the chart
 
-### 範例指令
+### Example Commands
 
 ```
-基礎圖表：
-- "畫一個銷售額的柱狀圖"
-- "顯示各月份的趨勢圖" 
-- "製作產品類別的圓餅圖"
+Basic Charts:
+- "Draw a bar chart of sales"
+- "Show the trend chart by month"
+- "Create a pie chart of product categories"
 
-進階圖表：
-- "比較各地區的銷售表現，用分組柱狀圖"
-- "分析價格和數量的相關性，用散點圖"
-- "顯示時間序列數據的趨勢變化"
+Advanced Charts:
+- "Compare sales performance across regions using a grouped bar chart"
+- "Analyze the correlation between price and quantity using a scatter plot"
+- "Show trend changes in time series data"
 
-統計分析：
-- "顯示數據的分布情況"
-- "比較不同類別的平均值"
-- "分析各變數之間的相關性"
+Statistical Analysis:
+- "Show the distribution of the data"
+- "Compare average values across different categories"
+- "Analyze correlations between variables"
 ```
 
-## 技術棧
+## Tech Stack
 
-### 核心依賴
-- **Streamlit**: Web 應用框架
-- **Pandas**: 數據處理和分析
-- **Plotly**: 互動式圖表庫
-- **Matplotlib & Seaborn**: 統計圖表
-- **Google GenerativeAI**: Gemini API 客戶端
-- **NumPy**: 數值計算支援
+### Core Dependencies
+- **Streamlit**: Web application framework
+- **Pandas**: Data processing and analysis
+- **Plotly**: Interactive charting library
+- **Matplotlib & Seaborn**: Statistical charts
+- **Google GenerativeAI**: Gemini API client
+- **NumPy**: Numerical computing support
 
-### 可選依賴（進階功能）
-- **Statsmodels**: 統計分析
-- **Scikit-learn**: 機器學習
-- **SciPy**: 科學計算
+### Optional Dependencies (Advanced Features)
+- **Statsmodels**: Statistical analysis
+- **Scikit-learn**: Machine learning
+- **SciPy**: Scientific computing
 
-## 配置說明
+## Configuration
 
 ### requirements.txt
 ```txt
-# 核心依賴
+# Core dependencies
 streamlit==1.40.0
 pandas==2.2.3
 numpy==1.24.4
@@ -183,119 +185,117 @@ seaborn==0.13.2
 google-generativeai==0.8.3
 python-dotenv==1.0.1
 
-# 可選依賴
+# Optional dependencies
 statsmodels==0.14.0
 scipy==1.11.4
 scikit-learn==1.3.2
 ```
 
-### .env 檔案範例
+### .env File Example
 ```env
-# Google Gemini API 配置
+# Google Gemini API Configuration
 GEMINI_API_KEY=your_api_key_here
 
-# 可選配置
+# Optional Configuration
 MAX_FILE_SIZE_MB=50
 DEFAULT_CHART_TYPE=plotly
 DEBUG_MODE=false
 ```
 
-## 支援的圖表類型
+## Supported Chart Types
 
-| 圖表類型 | 適用場景 | 示例指令 |
-|---------|---------|---------|
-| 柱狀圖 | 類別比較 | "各產品的銷量對比" |
-| 折線圖 | 趨勢分析 | "月銷售額變化趨勢" |
-| 散點圖 | 相關性分析 | "價格與銷量的關係" |
-| 圓餅圖 | 比例展示 | "市場占有率分布" |
-| 直方圖 | 分布分析 | "年齡分布情況" |
-| 箱線圖 | 統計摘要 | "各組數據的分布特徵" |
-| 熱力圖 | 相關性矩陣 | "變數間相關性分析" |
+| Chart Type | Use Case | Example Command |
+|-----------|----------|-----------------|
+| Bar Chart | Category comparison | "Compare sales by product" |
+| Line Chart | Trend analysis | "Monthly sales trend" |
+| Scatter Plot | Correlation analysis | "Relationship between price and sales" |
+| Pie Chart | Proportion display | "Market share distribution" |
+| Histogram | Distribution analysis | "Age distribution" |
+| Box Plot | Statistical summary | "Distribution characteristics of each group" |
+| Heatmap | Correlation matrix | "Correlation analysis between variables" |
 
-## 故障排除
+## Troubleshooting
 
-### 常見問題
+### Common Issues
 
-**1. 安裝失敗 (Python 3.13 兼容性問題)**
+**1. Installation Failure (Python 3.13 compatibility issues)**
 ```bash
-# 解決方案：使用 Python 3.11 或 3.12
-python --version  # 確認版本
+# Solution: Use Python 3.11 or 3.12
+python --version  # Check version
 pip install --upgrade pip setuptools
 ```
 
-**2. API Key 錯誤**
+**2. API Key Error**
 ```bash
-# 檢查 .env 檔案是否正確設定
-# 確認 API Key 有效性
+# Check if .env file is configured correctly
+# Verify API Key validity
 ```
 
-**3. 模組導入錯誤**
+**3. Module Import Error**
 ```bash
-# 重新安裝依賴
+# Reinstall dependencies
 pip install --upgrade --force-reinstall -r requirements.txt
 ```
 
-**4. 圖表生成失敗**
-- 檢查數據格式是否正確
-- 確認欄位名稱匹配
-- 嘗試更簡單的圖表描述
+**4. Chart Generation Failure**
+- Check if data format is correct
+- Confirm field names match
+- Try simpler chart descriptions
 
-### 效能優化
+### Performance Optimization
 
-- **大型檔案**: 建議數據量控制在 5000 行以內
-- **記憶體使用**: 可調整 Streamlit 的記憶體配置
-- **API 配額**: 注意 Gemini API 的使用限制
+- **Large Files**: Recommended to keep data volume under 5000 rows
+- **Memory Usage**: Can adjust Streamlit's memory configuration
+- **API Quota**: Be mindful of Gemini API usage limits
 
-## 貢獻指南
+## Contributing
 
-歡迎貢獻程式碼、回報問題或提出改進建議！
+Contributions, bug reports, and improvement suggestions are welcome!
 
-### 開發環境設定
-1. Fork 專案
-2. 建立功能分支: `git checkout -b feature/new-feature`
-3. 提交變更: `git commit -am 'Add new feature'`
-4. 推送分支: `git push origin feature/new-feature`
-5. 建立 Pull Request
+### Development Environment Setup
+1. Fork the project
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Create a Pull Request
 
-### 代碼規範
-- 使用 Python PEP 8 風格
-- 添加適當的註釋和文檔
-- 確保向後兼容性
-- 包含測試案例
+### Code Standards
+- Follow Python PEP 8 style
+- Add appropriate comments and documentation
+- Ensure backward compatibility
+- Include test cases
 
+## Support and Feedback
 
+If you encounter problems or have suggestions for improvement:
 
-## 支援與回饋
-
-如果您遇到問題或有改進建議：
-
-- **回報 Bug**: 請在 Issues 中詳細描述問題
-- **功能建議**: 歡迎提出新功能想法
-- **聯絡我們**: [chengyimio@gmail.com]
-- **文檔問題**: 幫助改善使用說明
+- **Report Bugs**: Please describe the issue in detail in Issues
+- **Feature Suggestions**: Welcome to propose new feature ideas
+- **Contact Us**: [chengyimio@gmail.com]
+- **Documentation Issues**: Help improve the documentation
 
 ---
 
-## 未來規劃
+## Future Plans
 
-- [ ] 支援更多檔案格式 (JSON, XML)
-- [ ] 增加儀表板功能
-- [ ] 多語言支援
-- [ ] 圖表匯出功能 (PNG, PDF)
-- [ ] 數據清理建議
-- [ ] 協作功能
-- [ ] 自訂圖表樣式
-- [ ] API 介面開發
+- [ ] Support more file formats (JSON, XML)
+- [ ] Add dashboard functionality
+- [ ] Multi-language support
+- [ ] Chart export functionality (PNG, PDF)
+- [ ] Data cleaning suggestions
+- [ ] Collaboration features
+- [ ] Custom chart styles
+- [ ] API interface development
 
-## 版本歷史
+## Version History
 
-### v1.0.0 (目前版本)
-- 基礎圖表生成功能
-- Excel/CSV 檔案支援
-- Gemini AI 整合
-- 安全代碼執行
-- 響應式 UI
+### v1.0.0 (Current Version)
+- Basic chart generation functionality
+- Excel/CSV file support
+- Gemini AI integration
+- Secure code execution
+- Responsive UI
 
 ---
 
-**如果這個專案對您有幫助，請給我們一個 Star！**
+**If this project helps you, please give us a Star!**
